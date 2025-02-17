@@ -34,38 +34,76 @@ Technologies:
   
 - HTML, CSS, JavaScript – web visualization
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Opis projektu - Polski**
 
-Roślinny Asystent to inteligentny system do monitorowania warunków wzrostu roślin. Projekt wykorzystuje ESP32, Arduino Nano, czujniki wilgotności gleby, temperatury DS18B20 i zegar RTC PCF8563, aby zbierać i przesyłać dane do serwera w czasie rzeczywistym. System pozwala na:
+„Roślinny Asystent” to inteligentny system nawadniania roślin, który na podstawie pomiarów wilgotności gleby oraz temperatury otoczenia automatycznie reguluje proces podlewania. Projekt wykorzystuje mikrokontrolery Arduino Nano oraz ESP32, a dane przechowywane są w bazie MySQL na lokalnym serwerze XAMPP.
 
-Pomiar wilgotności gleby przed i po podlewaniu
+System ma na celu wsparcie użytkowników w utrzymaniu odpowiednich warunków dla roślin w sposób efektywny i zautomatyzowany.
 
-Pomiar temperatury otoczenia
+Główne funkcje
 
-Zapisywanie danych na serwerze poprzez WiFi
+- Pomiar wilgotności gleby i temperatury w czasie rzeczywistym
 
-Sygnalizację ostrzeżeń, gdy gleba jest zbyt sucha
+- Automatyczne uruchamianie pompy na podstawie pomiarów wilgotności
 
-Podgląd wyników na stronie internetowej
+- Dynamiczne dostosowanie harmonogramu pomiarów w zależności od temperatury
 
-Dzięki temu możesz monitorować stan swoich roślin zdalnie i podejmować decyzje dotyczące ich nawadniania.
+- Wysyłanie danych do bazy MySQL za pomocą ESP32
 
-Technologie:
+- Wizualizacja danych w aplikacji webowej
 
-- ESP32 – komunikacja WiFi, przesyłanie danych
+- Sygnalizacja stanu za pomocą diody RGB
 
-- Arduino Nano – obsługa czujników, przetwarzanie danych
+Wykorzystane technologie
 
-- DS18B20 – czujnik temperatury
+- Arduino Nano – obsługuje czujniki i sterowanie pompą
 
-- PCF8563 RTC – zegar czasu rzeczywistego
+- ESP32 – obsługuje komunikację z serwerem
 
-- USART (UART) – komunikacja między ESP32 a Arduino
+- RTC PCF8563 – zegar czasu rzeczywistego
 
-- WiFi + HTTP Client – wysyłanie danych na serwer
+- Czujnik wilgotności gleby – pomiar wilgotności
 
-- PHP + MySQL – przechowywanie i analiza danych
+- DS18B20 – cyfrowy czujnik temperatury
 
-- HTML, CSS, JavaScript – wizualizacja danych
+- Pompa perystaltyczna – system podlewania
+
+- UART, I2C, OneWire – interfejsy komunikacyjne
+
+- XAMPP, MySQL, PHP – backend i baza danych
+
+- HTML, CSS – frontend aplikacji webowej
+
+Jak działa system?
+
+- Pomiary i analiza
+
+- Arduino Nano mierzy wilgotność gleby i temperaturę otoczenia
+
+- Jeśli wilgotność spadnie poniżej 40%, system aktywuje pompę
+
+- Jeśli temperatura przekroczy 28°C, zwiększa częstotliwość sprawdzania gleby
+
+Komunikacja ESP32 → Serwer
+
+- ESP32 łączy się z WiFi i przesyła dane do bazy MySQL
+
+- Dane zawierają wilgotność gleby przed i po podlewaniu, temperaturę, datę i czas
+
+Aplikacja webowa
+
+- Dane są prezentowane w interfejsie webowym
+
+- Możliwość monitorowania warunków w czasie rzeczywistym
+
+Struktura kodu
+
+- Arduino – kod obsługujący czujniki i pompę
+
+- ESP32 – kod obsługujący komunikację WiFi i wysyłkę danych
+
+- Backend – PHP do zapisu danych w MySQL
+
+- Frontend – HTML, CSS do wizualizacji
