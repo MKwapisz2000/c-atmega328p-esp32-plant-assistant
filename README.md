@@ -2,37 +2,75 @@
 
 **Project Description - English**
 
-Plant Assistant is a smart system for monitoring plant growth conditions. The project uses ESP32, Arduino Nano, soil moisture sensors, DS18B20 temperature sensor, and PCF8563 RTC clock to collect and send real-time data to a server. The system allows:
+"Plant Assistant" is an intelligent plant watering system that automatically adjusts irrigation based on soil moisture and temperature readings. The project uses Arduino Nano and ESP32 microcontrollers, with data stored in a MySQL database on a XAMPP server.
 
-Measuring soil moisture before and after watering  
+The goal is to assist users in maintaining optimal plant conditions efficiently and automatically.
 
-Measuring ambient temperature
+Main features
 
-Storing data on a server via WiFi
+- Real-time soil moisture and temperature monitoring
 
-Alert signaling when the soil is too dry
+- Automatic water pump activation based on soil moisture
 
-Viewing results on a web page
+- Dynamic scheduling of measurements based on temperature changes
 
-This allows remote plant monitoring and better irrigation management.
+- Data transmission to a MySQL database via ESP32
 
-Technologies:
+- Web application for real-time data visualization
 
-- ESP32 – WiFi communication, data transfer
-  
-- Arduino Nano – sensor processing
-  
-- DS18B20 – temperature sensor
-  
-- PCF8563 RTC – real-time clock for logging
-  
-- USART (UART) – ESP32-Arduino communication
-  
-- WiFi + HTTP Client – sending data to the server
-  
-- PHP + MySQL – database for storage and analysis
-  
-- HTML, CSS, JavaScript – web visualization
+- RGB LED signaling the moisture level
+
+Technologies used
+
+- Arduino Nano – manages sensors and pump control
+
+- ESP32 – handles WiFi communication
+
+- RTC PCF8563 – real-time clock module
+
+- Soil moisture sensor – measures soil moisture
+
+- DS18B20 – digital temperature sensor
+
+- Peristaltic pump – watering system
+
+- UART, I2C, OneWire – communication interfaces
+
+- XAMPP, MySQL, PHP – backend and database
+
+- HTML, CSS – frontend for the web application
+
+How does it work?
+
+- Measurement & Analysis
+
+- Arduino Nano measures soil moisture and temperature
+
+- If soil moisture drops below 40%, the system activates the pump
+
+- If the temperature exceeds 28°C, soil moisture is checked more frequently
+
+- ESP32 → Server Communication
+
+- ESP32 connects to WiFi and sends data to a MySQL database
+
+- Data includes soil moisture before and after watering, temperature, date, and time
+
+- Web Application
+
+- Displays real-time data
+
+- Allows monitoring of plant conditions remotely
+
+Code structure:
+
+- Arduino – handles sensors and pump control
+
+- ESP32 – manages WiFi and data transmission
+
+- Backend – PHP for database interaction
+
+- Frontend – HTML, CSS for visualization
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -86,13 +124,13 @@ Jak działa system?
 
 - Jeśli temperatura przekroczy 28°C, zwiększa częstotliwość sprawdzania gleby
 
-Komunikacja ESP32 → Serwer
+- Komunikacja ESP32 → Serwer
 
 - ESP32 łączy się z WiFi i przesyła dane do bazy MySQL
 
 - Dane zawierają wilgotność gleby przed i po podlewaniu, temperaturę, datę i czas
 
-Aplikacja webowa
+- Aplikacja webowa
 
 - Dane są prezentowane w interfejsie webowym
 
